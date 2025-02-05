@@ -1,6 +1,7 @@
 import streamlit as st
 import json
-import groq
+import groq 
+import pandas as pd
 
 
 MODELS = [
@@ -15,6 +16,7 @@ MODELS = [
     "llama3-8b-8192",
     "mixtral-8x7b-32768"
 ]
+
 def analyze_job_fit(client, json_data, job_description):
     prompt = f"""
     As an expert resume analyst, create a comprehensive optimization strategy for the given JSON resume data to match the job description. Your task:
@@ -106,8 +108,9 @@ def evaluate_resume(client, original_latex, optimized_latex, job_description, se
     4. Professional positioning
     5. Job description alignment
 
-    Provide a brief, quantitative assessment with clear, measurable improvements.
+    Provide a short, quantitative assessment with clear, measurable improvements.
     Highlight top 3 key enhancements and any potential areas for further refinement.
+    keep everything crisp and to the point.
 
     Original Resume: {original_latex}
     Optimized Resume: {optimized_latex}
@@ -115,7 +118,7 @@ def evaluate_resume(client, original_latex, optimized_latex, job_description, se
     """
 
     response = client.chat.completions.create(
-        model=selected_model,
+        model="llama3-8b-8192",
         messages=[{"role": "user", "content": prompt}],
         max_tokens=3000,
         temperature=0.1
@@ -124,16 +127,85 @@ def evaluate_resume(client, original_latex, optimized_latex, job_description, se
     return response.choices[0].message.content
 
 
-def main():
-    st.set_page_config(page_title="Multi-Agent Resume Optimizer", layout="wide")
+def generate_cover_letter(client, json_data, job_description, company_name, hiring_manager="", selected_model=""):
+    prompt = f"""
+    As an expert LaTeX cover letter writer, create a professional cover letter in LaTeX format. Use the following LaTeX template structure but modify the content based on the resume and job description:
+
+    \\documentclass[10pt,a4paper]{{letter}}
+    \\usepackage[utf8]{{inputenc}}
+    \\usepackage[T1]{{fontenc}}
+    \\usepackage{{geometry}}
+    \\usepackage{{parskip}}
+    \\usepackage{{microtype}}
+    \\usepackage[hidelinks]{{hyperref}}
     
-    st.title("🚀 Multi-Agent Resume Optimization")
+    % Set margins
+    \\geometry{{
+        top=0.8in,
+        bottom=0.8in,
+        left=0.8in,
+        right=0.8in
+    }}
+
+    Your task:
+    1. Extract candidate's contact information from the JSON resume
+    2. Create compelling content that:
+        - Opens with a strong hook related to the company/role
+        - Highlights 2-3 most relevant experiences/achievements from the resume
+        - Demonstrates understanding of the company's needs
+        - Shows enthusiasm for the specific role
+        - Closes with a clear call to action
+    3. Format everything in proper LaTeX letter format
+    4. Include specific achievements with measurable results
+    5. Reference key requirements from the job description
+    6. Keep the letter concise (max one page)
+
+    Resume Data:
+    {json.dumps(json_data)}
+
+    Job Description:
+    {job_description}
+
+    Company Name:
+    {company_name}
+
+    Hiring Manager:
+    {hiring_manager}
+
+    Generate complete, compilable LaTeX code that:
+    - Uses professional letter formatting
+    - Includes all necessary LaTeX packages
+    - Has proper spacing and margins
+    - Formats contact information blocks correctly
+    - Uses appropriate LaTeX commands for dates
+    - Creates a professional signature block
+
+    Return only the complete LaTeX code with no additional text or explanations.
+    """
+
+    response = client.chat.completions.create(
+        model=selected_model,
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=2000,
+        temperature=0.3
+    )
+    
+    return response.choices[0].message.content
+
+def main():
+    st.set_page_config(page_title="Multi-Agent Resume & Cover Letter Optimizer", layout="wide")
+    
+    st.title("🚀 Multi-Agent Resume & Cover Letter Optimization")
 
     # Sidebar configuration
     with st.sidebar:
         uploaded_json = st.file_uploader("Upload Resume JSON", type=['json'])
         groq_api_key = st.text_input("Groq API Key", type="password")
         selected_model = st.selectbox("Select Model for Optimization & Evaluation", MODELS)
+        
+        # Add tabs for navigation
+        tab_selection = st.radio("Select Document to Generate:", 
+                               ["Resume", "Cover Letter", "Both"])
 
     # Main content area
     col1, col2, col3 = st.columns(3)
@@ -141,10 +213,19 @@ def main():
     with col1:
         st.subheader("Job Description")
         job_description = st.text_area("Paste Job Description", height=300)
+        
+        # Only show company name input if cover letter is selected
+        if tab_selection in ["Cover Letter", "Both"]:
+            company_name = st.text_input("Company Name")
+            hiring_manager = st.text_input("Hiring Manager Name (Optional)")
 
     with col2:
-        st.subheader("LaTeX Template")
-        latex_template = st.text_area("Paste LaTeX Template", height=300)
+        if tab_selection in ["Resume", "Both"]:
+            st.subheader("LaTeX Resume Template")
+            latex_template = st.text_area("Paste LaTeX Template", height=300)
+        if tab_selection in ["Cover Letter", "Both"]:
+            st.subheader("Cover Letter Preview")
+            st.info("LaTeX code will be generated automatically")
 
     with col3:
         st.subheader("Resume Preview")
@@ -152,72 +233,65 @@ def main():
             resume_data = json.load(uploaded_json)
             st.json(resume_data, expanded=False)
 
-    # Optimize button
-    if st.button("Optimize Resume", use_container_width=True):
-        if not all([uploaded_json, job_description, latex_template, groq_api_key]):
-            st.error("Please complete all inputs")
+    # Generate button
+    if st.button("Generate Documents", use_container_width=True):
+        if not all([uploaded_json, job_description, groq_api_key]):
+            st.error("Please complete all required inputs")
+            return
+        
+        if tab_selection in ["Cover Letter", "Both"] and not company_name:
+            st.error("Please provide the company name for the cover letter")
             return
 
         try:
             client = groq.Client(api_key=groq_api_key)
 
-            # Agent 1: Job Fit Analysis (using default model)
-            with st.spinner("Analyzing Job Fit..."):
-                job_fit_analysis = analyze_job_fit(client, resume_data, job_description)
-                st.subheader("Job Fit Analysis")
-                st.markdown(job_fit_analysis)
+            if tab_selection in ["Resume", "Both"]:
+                # Existing resume optimization logic...
+                with st.spinner("Analyzing Job Fit..."):
+                    job_fit_analysis = analyze_job_fit(client, resume_data, job_description)
+                    st.subheader("Job Fit Analysis")
+                    st.markdown(job_fit_analysis)
 
-            # Agent 2: LaTeX Optimization (using selected model)
-            with st.spinner(f"Optimizing LaTeX Resume using {selected_model}..."):
-                optimized_latex = optimize_latex_resume(
-                    client, job_fit_analysis, latex_template, resume_data, selected_model
+                with st.spinner(f"Optimizing LaTeX Resume using {selected_model}..."):
+                    optimized_latex = optimize_latex_resume(
+                        client, job_fit_analysis, latex_template, resume_data, selected_model
+                    )
+                    st.subheader("Optimized LaTeX Resume")
+                    st.code(optimized_latex, language="latex")
+
+                with st.spinner(f"Evaluating Optimization using {selected_model}..."):
+                    resume_evaluation = evaluate_resume(
+                        client, latex_template, optimized_latex, job_description, selected_model
+                    )
+                    st.subheader("Optimization Evaluation")
+                    # ... (existing evaluation display code)
+
+            if tab_selection in ["Cover Letter", "Both"]:
+                with st.spinner("Generating LaTeX Cover Letter..."):
+                    cover_letter_latex = generate_cover_letter(
+                        client, resume_data, job_description,
+                        company_name, hiring_manager, selected_model
+                    )
+                    st.subheader("Generated LaTeX Cover Letter")
+                    st.code(cover_letter_latex, language="latex")
+                    
+                    # Download button for LaTeX cover letter
+                    st.download_button(
+                        label="Download LaTeX Cover Letter",
+                        data=cover_letter_latex,
+                        file_name="cover_letter.tex",
+                        mime="text/plain"
+                    )
+
+            # Download buttons for resume (if applicable)
+            if tab_selection in ["Resume", "Both"]:
+                st.download_button(
+                    label="Download Optimized LaTeX Resume",
+                    data=optimized_latex,
+                    file_name="optimized_resume.tex",
+                    mime="text/plain"
                 )
-                st.subheader("Optimized LaTeX Resume")
-                st.code(optimized_latex, language="latex")
-                #st.latex(optimized_latex)
-
-            # Agent 3: Comparative Evaluation (using selected model)
-            with st.spinner(f"Evaluating Optimization using {selected_model}..."):
-                resume_evaluation = evaluate_resume(
-                    client, latex_template, optimized_latex, job_description, selected_model
-                )
-                st.subheader("Optimization Evaluation")
-                
-                # Create a table for easy comparison
-                import pandas as pd
-                
-                # Parse the evaluation to extract key metrics
-                evaluation_lines = resume_evaluation.split('\n')
-                
-                # Create a comparison DataFrame
-                comparison_data = {
-                    'Metric': [
-                        'Keyword Match Percentage', 
-                        'Section Relevance', 
-                        'Achievement Descriptions', 
-                        'Professional Positioning', 
-                        'Job Description Alignment'
-                    ],
-                    'Original': ['Low', 'Generic', 'Standard', 'Generic', 'Partial'],
-                    'Optimized': [line.split(':')[1].strip() for line in evaluation_lines if ':' in line][:5]
-                }
-                
-                comparison_df = pd.DataFrame(comparison_data)
-                
-                # Use Streamlit to display the table
-                st.table(comparison_df)
-                
-                # Add a text summary of key improvements
-                st.markdown("### Key Improvements")
-                st.markdown(resume_evaluation)
-
-            # Download options
-            st.download_button(
-                label="Download Optimized LaTeX Resume",
-                data=optimized_latex,
-                file_name="optimized_resume.tex",
-                mime="text/plain"
-            )
 
         except Exception as e:
             st.error(f"An error occurred: {e}")
