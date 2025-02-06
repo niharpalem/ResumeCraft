@@ -1,0 +1,129 @@
+
+\documentclass[a4paper, 8pt]{article}
+\usepackage[margin=0.25in]{geometry}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[scaled=0.9]{helvet}
+\usepackage{sfmath}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\seriesdefault}{\mddefault}
+\renewcommand{\shapedefault}{\updefault}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+
+\newcommand{\resumeSection}[1]{\vspace{1pt}\textbf{\normalsize #1}\vspace{1pt}\hrule\vspace{1pt}}
+\newcommand{\resumeSubsection}[2]{\vspace{0.0pt}\textbf{\scriptsize #1} \hfill \scriptsize #2 \vspace{0.0pt}\hrule}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Large SAI NIHAR REDDY PALEM} \\
+    \small\href{mailto:sainiharreddy.palem@sjsu.edu}{sainiharreddy.palem@sjsu.edu} $\mid$ (562)-822-7482 $\mid$ San Jose, CA $\mid$ 
+    \href{https://github.com/niharpalem}{GitHub} $\mid$ \href{https://www.linkedin.com/in/nihar-palem-1b955a183/}{LinkedIn} $\mid$ \href{https://nihar-palem.medium.com/}{Medium} $\mid$ \href{https://huggingface.co/spaces/Niharmahesh/Portfolio}{Portfolio}
+\end{center}
+
+\resumeSection{Summary}
+{\small As an AI engineer with a strong foundation in machine learning and data engineering, I specialize in developing robust data pipelines, implementing efficient annotation systems, and creating comprehensive evaluation metrics to enhance AI model performance. My experience spans from large-scale data processing to cutting-edge model development using technologies like PyTorch and TensorFlow. I thrive in collaborative, fast-paced environments where I can apply my problem-solving skills to drive innovative AI solutions. With a passion for advancing AI in creative domains, I am dedicated to pushing the boundaries of what's possible in AI-assisted design and making these tools accessible to all users.}
+
+\resumeSection{Education}
+{\small
+\textbf{San Jose State University, California, USA} \hfill \textit{Jan 2023 -- Dec 2024}\\
+\textit{Master of Science, Data Analytics}\\
+\small{Relevant Coursework: Machine Learning, Deep Learning, Big Data Analytics, Mathematics for Data analysis}
+
+\textbf{Sreenidhi Institute of Science and Technology, Hyderabad, India} \hfill \textit{June 2015 -- June 2019}\\
+\textit{Bachelor of Technology, Electrical and Electronics Engineering (EEE)}
+}
+
+\resumeSection{Technical Skills}
+{\small
+\begin{itemize}[itemsep=0pt, leftmargin=*]
+    \item \textbf{AI/ML Infrastructure:} PyTorch, TensorFlow, Scikit-Learn, Apache Spark, Docker, Model Development Pipelines
+    \item \textbf{Machine Learning:} Deep Learning, Computer Vision, NLP, Reinforcement Learning, Vision Transformers, LLMs (GPT, LLaMA)
+    \item \textbf{Data Engineering:} ETL/ELT Pipelines, Apache Airflow, Data Annotation Systems, CRISP-DM methodology
+    \item \textbf{Cloud \& Big Data:} AWS (Certified), GCP (BigQuery, Cloud Composer, Cloud Storage), Snowflake, AWS Redshift
+    \item \textbf{Data Visualization:} Tableau, PowerBI, Seaborn, Matplotlib, Streamlit
+    \item \textbf{Databases:} MySQL, MongoDB, Snowflake, BigQuery
+    \item \textbf{Programming Languages:} Python (Advanced), SQL (Advanced)
+\end{itemize}
+}
+
+
+\resumeSection{Professional Experience}
+{\small
+\textbf{San Jose State University, San Jose} \hfill \textit{Aug 2024 -- Dec 2024}\\
+\textit{Instructional Student Assistant}
+\begin{itemize}[itemsep=0pt, leftmargin=*]
+    \item Improved student project implementation efficiency by 30\% through comprehensive feedback and technical guidance.
+    \item Reviewed and debugged student data pipelines, offering solutions for complex technical challenges in data analysis and ML model optimization.
+\end{itemize}
+
+\textbf{Bharat Electronics Limited, Hyderabad} \hfill \textit{Feb 2021 -- Mar 2022}\\
+\textit{Data Analyst}
+\begin{itemize}[itemsep=0pt, leftmargin=*]
+    \item Optimized SQL queries for multi-million row defense databases, improving analysis efficiency by 40\% across Navy, Air Force, and international defense project analytics.
+    \item Developed and maintained 100+ Power BI dashboards tracking defense electronics sales, production costs, and project metrics, enabling data-driven decisions for senior management.
+    \item Implemented data standardization protocols using SQL triggers, ensuring consistency in currency conversions and text formatting.
+\end{itemize}
+}
+
+\resumeSection{Projects and Achievements}
+{\small
+\textbf{Multi-Agent Job Search System} \href{https://huggingface.co/spaces/Niharmahesh/Multi_Agent_Job_search_and_match}{\textcolor{gray}{Application}} 
+\hfill \textit{Jan 2025}
+\begin{itemize}[itemsep=0pt, leftmargin=*]
+    \item Engineered dual-agent platform using LLaMA models (8B for parameter extraction and resume summarization, 70B for matching), implementing real-time web scraping across LinkedIn, Glassdoor, and Indeed with automated batch processing of 60+ jobs per search.
+    \item Developed intelligent matching system with resume summarization and job compatibility scoring, achieving 70\% reduction in search time through optimized prompt engineering and structured data processing.
+\end{itemize}
+
+\textbf{Job Easz Data Collector} 
+\href{https://huggingface.co/spaces/Niharmahesh/job_easz}{\textcolor{gray}{Application}} 
+\hfill \textit{Dec 2024}
+    \begin{itemize}[itemsep=0pt, leftmargin=*]
+        \item Developed an automated data collection pipeline using Apache Airflow, scraping 10000+ job postings daily from LinkedIn, Glassdoor, Indeed, and Google Jobs
+        with a combination of roles and locations (1500+), storing data in Hugging Face datasets for open-source accessibility.
+        \item Created an interactive dashboard featuring time series analysis of job postings and role-based trends, with search and filter functionalities.
+        \item Enabled users to access and analyze job market data through an open-source application, promoting data-driven decision making in career planning.
+    \end{itemize}
+
+\textbf{Sign Language Assistant}
+\href{https://huggingface.co/spaces/Niharmahesh/slr-easz}{\textcolor{gray}{Application}} 
+\hfill \textit{Aug 2024 - Oct 2024}
+    \begin{itemize}[itemsep=0pt, leftmargin=*]
+        \item Built real-time ASL translation system using Google's Mediapipe Model and Random Forest classifier with optimized gesture recognition.
+        \item Achieved 95\% accuracy for 19 alphabets while implementing interactive learning features with immediate feedback mechanisms.
+    \end{itemize}
+
+\textbf{National Infrastructure Monitoring} 
+\href{https://huggingface.co/spaces/Niharmahesh/Data298}{\textcolor{gray}{Application}} 
+\hfill \textit{Jan 2024 - Dec 2024}
+    \begin{itemize}[itemsep=0pt, leftmargin=*]
+        \item Developed Vision Transformer-based satellite imagery analysis system processing 40GB dataset with custom CV models for infrastructure monitoring.
+        \item Achieved 85\% accuracy in change detection and deployed interactive temporal analysis interface on Hugging Face Spaces.
+    \end{itemize}
+
+\textbf{Stock Market Chatbot} 
+\hfill \textit{Aug 2023 - Dec 2023}
+    \begin{itemize}[itemsep=0pt, leftmargin=*]
+        \item Created bilingual financial analysis chatbot integrating GPT-3.5 with yfinance API for real-time market insights and personalized recommendations.
+        \item Engineered high-performance backend using Apache Spark and Snowflake, achieving 30\% query optimization with sub-5 second response time.
+    \end{itemize}
+
+\textbf{Twitter Trend Analysis with BigQuery} \hfill \textit{Jan 2023 - Apr 2023}
+    \begin{itemize}[itemsep=0pt, leftmargin=*]
+        \item Engineered GCP-based data pipeline using Cloud Composer and BigQuery, implementing OLAP analytics with Star Schema for processing 10k daily tweets.
+        \item Developed automated ETL workflows with custom Python operators for data transformation, achieving 40\% improvement in processing efficiency.
+    \end{itemize}
+}
+
+\resumeSection{Certifications}
+{\small
+\begin{itemize}[itemsep=0pt, leftmargin=*]
+    \item \textbf{AWS Certified Cloud Practitioner:} Validated knowledge of AWS services, security, and architectural principles (Jan 2024).
+\end{itemize}
+}
+
+\end{document}
