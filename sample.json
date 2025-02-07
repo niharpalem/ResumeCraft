@@ -1,0 +1,146 @@
+{
+  "name": "EMILY ZHANG CHEN",
+  "contact": {
+      "email": "emily.chen@email.com",
+      "phone": "415-555-0123",
+      "location": "Seattle, WA",
+      "links": {
+          "GitHub": "github.com/emilychen",
+          "LinkedIn": "linkedin.com/in/emilychen",
+          "Medium": "medium.com/@emilychen",
+          "Portfolio": "emilychen.dev"
+      }
+  },
+  "education": [
+      {
+          "institution": "University of Washington, Seattle, USA",
+          "degree": "Master of Science, Computer Science",
+          "duration": "Sep 2022 – Jun 2024",
+          "relevant_coursework": [
+              "Distributed Systems",
+              "Cloud Computing",
+              "Advanced Algorithms",
+              "Natural Language Processing",
+              "Computer Vision",
+              "Software Engineering"
+          ]
+      },
+      {
+          "institution": "University of California Berkeley, USA",
+          "degree": "Bachelor of Science, Computer Science and Mathematics",
+          "duration": "Aug 2018 – May 2022"
+      }
+  ],
+  "technical_skills": {
+      "Programming Languages": ["Java", "Go", "JavaScript", "Python", "C++"],
+      "Web Development": [
+          "React",
+          "Node.js",
+          "Vue.js",
+          "GraphQL",
+          "REST APIs",
+          "TypeScript"
+      ],
+      "DevOps": [
+          "Kubernetes",
+          "Jenkins",
+          "Terraform",
+          "CI/CD Pipelines",
+          "Infrastructure as Code"
+      ],
+      "Cloud Computing": [
+          "Azure (Certified)",
+          "AWS",
+          "Microservices Architecture",
+          "Service Mesh",
+          "Containerization"
+      ],
+      "Software Engineering": [
+          "System Design",
+          "Design Patterns",
+          "Test-Driven Development",
+          "Agile Methodologies"
+      ],
+      "Tools": [
+          "Git",
+          "Docker",
+          "Jira",
+          "Confluence",
+          "VS Code",
+          "IntelliJ"
+      ],
+      "Databases": ["PostgreSQL", "Redis", "Cassandra", "Elasticsearch"]
+  },
+  "professional_experience": [
+      {
+          "company": "Microsoft, Seattle",
+          "role": "Software Engineering Intern",
+          "duration": "May 2023 – Aug 2023",
+          "responsibilities": [
+              "Developed scalable microservices for Azure's container orchestration platform, improving deployment efficiency by 35%",
+              "Implemented automated testing framework reducing regression testing time by 60% across the platform"
+          ]
+      },
+      {
+          "company": "Intel Corporation, Santa Clara",
+          "role": "Software Developer",
+          "duration": "Jun 2022 – Apr 2023",
+          "responsibilities": [
+              "Led development of internal developer tools used by 200+ engineers, reducing build times by 45%",
+              "Architected and implemented real-time monitoring system for semiconductor manufacturing processes",
+              "Mentored 5 junior developers and conducted technical interviews for new hires"
+          ]
+      }
+  ],
+  "projects": [
+      {
+          "name": "Distributed Game Engine",
+          "duration": "Oct 2023 - Present",
+          "description": [
+              "Built high-performance distributed game engine supporting 100,000 concurrent players using Go and WebSocket",
+              "Implemented custom networking protocol reducing latency by 40% compared to standard TCP/IP implementation"
+          ]
+      },
+      {
+          "name": "Secure File Sharing System",
+          "duration": "Jul 2023 - Sep 2023",
+          "description": [
+              "Developed end-to-end encrypted file sharing system using React and Node.js with zero-knowledge architecture",
+              "Implemented custom cryptographic protocols ensuring GDPR compliance and military-grade security"
+          ]
+      },
+      {
+          "name": "AI-Powered Code Review Assistant",
+          "duration": "Mar 2023 - Jun 2023",
+          "description": [
+              "Created machine learning model to automate code reviews using transformer architecture",
+              "Achieved 85% accuracy in detecting common code smells and security vulnerabilities"
+          ]
+      },
+      {
+          "name": "Distributed Database System",
+          "duration": "Jan 2023 - Mar 2023",
+          "description": [
+              "Implemented distributed database supporting ACID transactions and eventual consistency",
+              "Developed custom consensus protocol handling network partitions and node failures"
+          ]
+      }
+  ],
+  "certifications": [
+      {
+          "name": "Microsoft Azure Solutions Architect Expert",
+          "details": "Comprehensive certification for designing cloud solutions",
+          "date": "Dec 2023"
+      },
+      {
+          "name": "Certified Kubernetes Administrator (CKA)",
+          "details": "Advanced certification in container orchestration",
+          "date": "Aug 2023"
+      }
+  ],
+  "achievements": [
+      "First place in University of Washington Hackathon 2023",
+      "Published paper on distributed systems at SOSP 2023",
+      "Open source contributor to Kubernetes project with 5+ accepted PRs"
+  ]
+}
