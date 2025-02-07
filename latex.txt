@@ -21,8 +21,8 @@
 
 \begin{center}
     \textbf{\Large SAI NIHAR REDDY PALEM} \\
-    \small\href{mailto:sainiharreddy.palem@sjsu.edu}{sainiharreddy.palem@sjsu.edu} $\mid$ (562)-822-7482 $\mid$ San Jose, CA $\mid$ 
-    \href{https://github.com/niharpalem}{GitHub} $\mid$ \href{https://www.linkedin.com/in/nihar-palem-1b955a183/}{LinkedIn} $\mid$ \href{https://nihar-palem.medium.com/}{Medium} $\mid$ \href{https://huggingface.co/spaces/Niharmahesh/Portfolio}{Portfolio}
+    \small\href{mailto:youremail.com}{youremail.com} $\mid$ XXX-XXX-XXXX $\mid$ San Jose, CA $\mid$ 
+    \href{https://github.com/youraccont}{GitHub} $\mid$ \href{https://www.linkedin.com/in/yourlinkedIn/}{LinkedIn} $\mid$ \href{ifany}{Medium} $\mid$ \href{ifany}{Portfolio}
 \end{center}
 
 \resumeSection{Summary}
