@@ -1,44 +1,45 @@
+
 # AI Resume & Cover Letter Optimizer
 
 ## Overview
-An AI-powered tool that optimizes resumes and cover letters using multiple LLM agents. The tool analyzes your JSON-formatted resume against job descriptions and generates LaTeX-formatted documents.
+An AI-powered tool that intelligently crafts resumes and cover letters using multiple LLM agents. The tool analyzes your complete professional profile in JSON format and selectively uses relevant information to match specific job descriptions.
 
 ## Core Features
-- Job fit analysis with skill mapping
+- Smart profile-to-job matching
+- Selective information highlighting
 - Resume optimization in LaTeX
 - Automated cover letter generation
 - Performance evaluation metrics
 
 ## How It Works
 
-### 1. Job Fit Analysis
-- Analyzes resume JSON against job description
-- Calculates skill overlap percentage
-- Creates 3-line professional summary
-- Suggests keyword optimizations
+### 1. Profile Analysis
+- Analyzes complete user profile JSON
+- Selectively picks relevant experiences and skills
+- Creates tailored professional summary
+- Identifies key matching points with job description
 
 ### 2. Resume Generation
-- Converts analysis into LaTeX format
-- Preserves original template styling
-- Reorganizes content for relevance
-- Optimizes keyword placement
+- Uses built-in LaTeX template
+- Selectively presents most relevant information
+- Optimizes content order and keywords
+- Maintains professional formatting
 
 ### 3. Cover Letter Creation
 - 4-paragraph professional structure
-- Includes quantifiable achievements
-- Automatically formats in LaTeX
+- Highlights most relevant achievements
+- Built-in LaTeX template
 - Maintains consistent branding
 
 ## Usage
-1. Format your resume as JSON
-2. Input job description
+1. Prepare your complete profile in JSON format (sample format is provided as sample.json)
+2. Input target job description
 3. Select preferred LLM model
-4. Generate optimized documents
+4. Generate tailored documents
 
 ## Required Files
-- `resume.json`: Your resume data
-- `latex.txt`: LaTeX template
-- Groq API key
+- `profile.json`: Your complete professional profile (sample format is provided as sample.json)
+- Groq API key 
 
 ## Available Models
 ```
