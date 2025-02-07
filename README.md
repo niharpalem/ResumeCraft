@@ -1,5 +1,5 @@
 
-# AI Resume & Cover Letter Optimizer
+# Resume & Cover Letter Optimizer
 
 ## Overview
 An AI-powered tool that intelligently crafts resumes and cover letters using multiple LLM agents. The tool analyzes your complete professional profile in JSON format and selectively uses relevant information to match specific job descriptions.
